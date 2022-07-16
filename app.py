@@ -1,35 +1,17 @@
-from scrape import cleandata2019_1, cleandata2019_2, cleandata2020_1, cleandata2020_2, cleandata2021_1
 from flask import Flask, render_template, jsonify, request
+import json
+
+filenames = ['data_penduduk_2019_sem-1.json','data_penduduk_2019_sem-2.json','data_penduduk_2020_sem-1.json','data_penduduk_2020_sem-2.json','data_penduduk_2021_sem-1.json']
+
+files = [open(filename, 'r') for filename in filenames]
+sem1_2019 = json.loads(files[0].read())
+sem2_2019 = json.loads(files[1].read())
+sem1_2020 = json.loads(files[2].read())
+sem2_2020 = json.loads(files[3].read())
+sem1_2021 = json.loads(files[4].read())
+
 
 api = Flask(__name__)
-
-def create_json(data,option):
-    dump = data
-    datain = []
-    if option == 1:
-        data_length = len(data['desa kelurahan']) - 1
-        for index in range(0, data_length):
-            insert = {'nama kecamatan': dump['nama kecamatan'][index], 
-                      'desa kelurahan': dump['desa kelurahan'][index],
-                      'jumlah pria': dump['jumlah pria'][index],
-                      'jumlah wanita': dump['jumlah wanita'][index],
-                      'kepala keluarga': dump['kepala keluarga'][index],
-                      'jumlah penduduk:': dump['jumlah penduduk'][index]}
-            
-            datain.append(insert)
-
-    elif option == 2:
-         data_length = len(data['desa kelurahan'])
-         for index in range(0, data_length):
-            insert = {'desa kelurahan': dump['desa kelurahan'][index],
-                      'jumlah pria': dump['jumlah pria'][index],
-                      'jumlah wanita': dump['jumlah wanita'][index],
-                      'kepala keluarga': dump['kepala keluarga'][index],
-                      'jumlah penduduk:': dump['jumlah penduduk'][index]}
-            
-            datain.append(insert)
-    
-    return datain
 
 
 @api.route("/")
@@ -39,13 +21,12 @@ def home():
 @api.route("/2019-semester-1", methods=['GET','POST'])
 def data_penduduk_2019_1():
     try:
-        data = create_json(cleandata2019_1,option=1)
         if request.method == 'GET':
-            return jsonify(data)
+            return jsonify(sem1_2019)
 
         elif request.method == 'POST':
             id = request.args.get('id')
-            return jsonify(data[int(id)])
+            return jsonify(sem1_2019[int(id)])
             
     except IndexError:
         response = jsonify({'status':'id error, masukkan id antara 0 - 129'})
@@ -65,13 +46,12 @@ def data_penduduk_2019_1():
 @api.route("/2019-semester-2", methods=['GET','POST'])
 def data_penduduk_2019_2():
     try:
-        data = create_json(cleandata2019_2,option=2)
         if request.method == 'GET':
-            return jsonify(data)
+            return jsonify(sem2_2019)
 
         elif request.method == 'POST':
             id = request.args.get('id')
-            return jsonify(data[int(id)])
+            return jsonify(sem2_2019[int(id)])
             
     except IndexError:
         response = jsonify({'status':'id error, masukkan id antara 0 - 129'})
@@ -91,13 +71,12 @@ def data_penduduk_2019_2():
 @api.route("/2020-semester-1", methods=['GET','POST'])
 def data_penduduk_2020_1():
     try:
-        data = create_json(cleandata2020_1,option=1)
         if request.method == 'GET':
-            return jsonify(data)
+            return jsonify(sem1_2020)
 
         elif request.method == 'POST':
             id = request.args.get('id')
-            return jsonify(data[int(id)])
+            return jsonify(sem1_2020[int(id)])
             
     except IndexError:
         response = jsonify({'status':'id error, masukkan id antara 0 - 129'})
@@ -117,13 +96,12 @@ def data_penduduk_2020_1():
 @api.route("/2020-semester-2", methods=['GET','POST'])
 def data_penduduk_2020_2():
     try:
-        data = create_json(cleandata2020_2,option=2)
         if request.method == 'GET':
-            return jsonify(data)
+            return jsonify(sem2_2020)
 
         elif request.method == 'POST':
             id = request.args.get('id')
-            return jsonify(data[int(id)])
+            return jsonify(sem2_2020[int(id)])
             
     except IndexError:
         response = jsonify({'status':'id error, masukkan id antara 0 - 129'})
@@ -143,13 +121,12 @@ def data_penduduk_2020_2():
 @api.route("/2021-semester-1", methods=['GET','POST'])
 def data_penduduk_2021_1():
     try:
-        data = create_json(cleandata2021_1,option=2)
         if request.method == 'GET':
-            return jsonify(data)
+            return jsonify(sem1_2021)
     
         elif request.method == 'POST':
             id = request.args.get('id')
-            return jsonify(data[int(id)])
+            return jsonify(sem1_2021[int(id)])
             
     except IndexError:
         response = jsonify({'status':'id error, masukkan id antara 0 - 129'})
