@@ -1,5 +1,5 @@
-*cfg
 *sqlite
+__pycache__/
 venv/
 data.py
 test.py
