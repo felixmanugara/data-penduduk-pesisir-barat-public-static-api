@@ -1,7 +1,8 @@
 from flask import Flask, render_template, jsonify, request
 import json
 
-filenames = ['data_penduduk_2019_sem-1.json','data_penduduk_2019_sem-2.json','data_penduduk_2020_sem-1.json','data_penduduk_2020_sem-2.json','data_penduduk_2021_sem-1.json']
+
+filenames = ['json/data_penduduk_2019_sem-1.json','json/data_penduduk_2019_sem-2.json','json/data_penduduk_2020_sem-1.json','json/data_penduduk_2020_sem-2.json','json/data_penduduk_2021_sem-1.json']
 
 files = [open(filename, 'r') for filename in filenames]
 sem1_2019 = json.loads(files[0].read())
