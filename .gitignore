@@ -1,0 +1,9 @@
+*cfg
+*sqlite
+__pycache__
+bin/
+include/
+lib/
+lib64/
+data.py
+test.py
