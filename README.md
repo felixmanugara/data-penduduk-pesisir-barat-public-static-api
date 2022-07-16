@@ -1,6 +1,6 @@
 # Data Penduduk Pesisir barat Public static API
 
-API statis berdasarkan data publik milik pemerintah, dibuat dengan python.
+API statis berdasarkan data publik milik pemerintah, dibuat dengan python Flask.
 
 sumber data: https://disdukcapil.pesisirbaratkab.go.id/
 
