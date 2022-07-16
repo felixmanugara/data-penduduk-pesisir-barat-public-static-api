@@ -147,16 +147,15 @@ cleandata2020_1 = cleaned_data(data2020_1,option=2)
 cleandata2020_2 = cleaned_data(data2020_2,option=1)
 cleandata2021_1 = cleaned_data(data2021_1,option=1)
 
-"""
+
 # function for create json 
 def create_json(data, filename,option):
     dump = data
     datain = []
-    if options == 1:
+    if option == 1:
         data_length = len(data['nama kecamatan']) - 1
         for index in range(0, data_length):
-            insert = {'id' : index,
-                      'nama kecamatan': dump['nama kecamatan'][index], 
+            insert = {'nama kecamatan': dump['nama kecamatan'][index], 
                       'desa kelurahan': dump['desa kelurahan'][index],
                       'jumlah pria': dump['jumlah pria'][index],
                       'jumlah wanita': dump['jumlah wanita'][index],
@@ -165,11 +164,10 @@ def create_json(data, filename,option):
             
             datain.append(insert)
 
-    elif options == 2:
+    elif option == 2:
          data_length = len(data['desa kelurahan'])
          for index in range(0, data_length):
-            insert = {'id' : index,
-                      'desa kelurahan': dump['desa kelurahan'][index],
+            insert = {'desa kelurahan': dump['desa kelurahan'][index],
                       'jumlah pria': dump['jumlah pria'][index],
                       'jumlah wanita': dump['jumlah wanita'][index],
                       'kepala keluarga': dump['kepala keluarga'][index],
@@ -181,9 +179,8 @@ def create_json(data, filename,option):
         json.dump(datain, fp)
     
 
-create_json(clean2019_1, 'data_penduduk_2019_sem-1.json',option=1)
-create_json(clean2019_2, 'data_penduduk_2019_sem-2.json',option=2)
-create_json(clean2020_1, 'data_penduduk_2020_sem-1.json',option=1)
-create_json(clean2020_2, 'data_penduduk_2020_sem-2.json',option=2)
-create_json(clean2021_1, 'data_penduduk_2021_sem-1.json',option=2)
-"""
+create_json(cleandata2019_1, 'data_penduduk_2019_sem-1.json',option=1)
+create_json(cleandata2019_2, 'data_penduduk_2019_sem-2.json',option=2)
+create_json(cleandata2020_1, 'data_penduduk_2020_sem-1.json',option=1)
+create_json(cleandata2020_2, 'data_penduduk_2020_sem-2.json',option=2)
+create_json(cleandata2021_1, 'data_penduduk_2021_sem-1.json',option=2)
