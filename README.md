@@ -1,4 +1,4 @@
-# Data Penduduk Pesisir barat Public static API
+# Data Penduduk Pesisir Barat Public static API
 
 API statis berdasarkan data publik milik pemerintah, dibuat dengan python Flask.
 
