@@ -1,7 +1,7 @@
 from scrape import cleandata2019_1, cleandata2019_2, cleandata2020_1, cleandata2020_2, cleandata2021_1
 from flask import Flask, render_template, jsonify, request
 
-app = Flask(__name__)
+api = Flask(__name__)
 
 def create_json(data,option):
     dump = data
@@ -32,11 +32,11 @@ def create_json(data,option):
     return datain
 
 
-@app.route("/")
+@api.route("/")
 def home():
     return render_template('index.html')
 
-@app.route("/2019-semester-1", methods=['GET','POST'])
+@api.route("/2019-semester-1", methods=['GET','POST'])
 def data_penduduk_2019_1():
     try:
         data = create_json(cleandata2019_1,option=1)
@@ -62,7 +62,7 @@ def data_penduduk_2019_1():
         response.status_code = 400
         return response
 
-@app.route("/2019-semester-2", methods=['GET','POST'])
+@api.route("/2019-semester-2", methods=['GET','POST'])
 def data_penduduk_2019_2():
     try:
         data = create_json(cleandata2019_2,option=2)
@@ -88,7 +88,7 @@ def data_penduduk_2019_2():
         response.status_code = 400
         return response
     
-@app.route("/2020-semester-1", methods=['GET','POST'])
+@api.route("/2020-semester-1", methods=['GET','POST'])
 def data_penduduk_2020_1():
     try:
         data = create_json(cleandata2020_1,option=1)
@@ -114,7 +114,7 @@ def data_penduduk_2020_1():
         response.status_code = 400
         return response
  
-@app.route("/2020-semester-2", methods=['GET','POST'])
+@api.route("/2020-semester-2", methods=['GET','POST'])
 def data_penduduk_2020_2():
     try:
         data = create_json(cleandata2020_2,option=2)
@@ -140,7 +140,7 @@ def data_penduduk_2020_2():
         response.status_code = 400
         return response
     
-@app.route("/2021-semester-1", methods=['GET','POST'])
+@api.route("/2021-semester-1", methods=['GET','POST'])
 def data_penduduk_2021_1():
     try:
         data = create_json(cleandata2021_1,option=2)
@@ -168,5 +168,5 @@ def data_penduduk_2021_1():
             
         
 if __name__ == "__main__":
-    app.run(debug=True)
+    api.run()
 
