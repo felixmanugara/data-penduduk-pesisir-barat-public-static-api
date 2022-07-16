@@ -3,3 +3,4 @@
 venv/
 data.py
 test.py
+scrape.py
