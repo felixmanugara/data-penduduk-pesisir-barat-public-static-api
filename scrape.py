@@ -160,7 +160,7 @@ def create_json(data, filename,option):
                       'jumlah pria': dump['jumlah pria'][index],
                       'jumlah wanita': dump['jumlah wanita'][index],
                       'kepala keluarga': dump['kepala keluarga'][index],
-                      'jumlah penduduk:': dump['jumlah penduduk'][index]}
+                      'jumlah penduduk': dump['jumlah penduduk'][index]}
             
             datain.append(insert)
 
@@ -171,7 +171,7 @@ def create_json(data, filename,option):
                       'jumlah pria': dump['jumlah pria'][index],
                       'jumlah wanita': dump['jumlah wanita'][index],
                       'kepala keluarga': dump['kepala keluarga'][index],
-                      'jumlah penduduk:': dump['jumlah penduduk'][index]}
+                      'jumlah penduduk': dump['jumlah penduduk'][index]}
             
             datain.append(insert)
 
