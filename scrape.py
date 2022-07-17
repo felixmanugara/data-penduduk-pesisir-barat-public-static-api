@@ -179,8 +179,8 @@ def create_json(data, filename,option):
         json.dump(datain, fp)
     
 
-create_json(cleandata2019_1, 'data_penduduk_2019_sem-1.json',option=1)
-create_json(cleandata2019_2, 'data_penduduk_2019_sem-2.json',option=2)
-create_json(cleandata2020_1, 'data_penduduk_2020_sem-1.json',option=1)
-create_json(cleandata2020_2, 'data_penduduk_2020_sem-2.json',option=2)
-create_json(cleandata2021_1, 'data_penduduk_2021_sem-1.json',option=2)
+create_json(cleandata2019_1, 'data_source/data_penduduk_2019_sem-1.json',option=1)
+create_json(cleandata2019_2, 'data_source/data_penduduk_2019_sem-2.json',option=2)
+create_json(cleandata2020_1, 'data_source/data_penduduk_2020_sem-1.json',option=1)
+create_json(cleandata2020_2, 'data_source/data_penduduk_2020_sem-2.json',option=2)
+create_json(cleandata2021_1, 'data_source/data_penduduk_2021_sem-1.json',option=2)
